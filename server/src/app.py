@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, m
 import pyrebase
 from datetime import datetime
 import random
+import os
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key"
@@ -16,14 +17,14 @@ users_emails = {
 }
 
 config = {
-    "apiKey": "AIzaSyA-2WZvjDcB2OwgcwbqGHUmpT-ZfCJ9ueU",
-    "authDomain": "bostonexpense.firebaseapp.com",
-    "projectId": "bostonexpense",
-    "storageBucket": "bostonexpense.appspot.com",
-    "messagingSenderId": "577204258750",
-    "appId": "1:577204258750:web:b951a7669edd2d6b731bef",
-    "measurementId": "G-ERY8MRQ7YH",
-    "databaseURL": "https://bostonexpense-default-rtdb.firebaseio.com/",
+    "apiKey": os.environ.get('API_KEY'),
+    "authDomain": os.environ.get('AUTH_DOMAIN'),
+    "projectId": os.environ.get('PROJECT_ID'),
+    "storageBucket":os.environ.get('STORAGE_BUCKET'),
+    "messagingSenderId": os.environ.get('MESSAGING_SENDER_ID'),
+    "appId": os.environ.get('APP_ID'),
+    "measurementId": os.environ.get('MEASUREMENT_ID'),
+    "databaseURL":os.environ.get('DATABASE_URL')
 }
 
 firebase = pyrebase.initialize_app(config)
