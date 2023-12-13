@@ -1,0 +1,126 @@
+/* compliment2.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+    align-content: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #2196F3;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    align-content: center;
+}
+
+.filterF {
+    width: 100%;
+    min-height: 30px;
+}
+
+label {
+    margin-bottom: 5px;
+    color: #bbb;
+}
+
+input,
+select,
+button {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #333;
+    color: #fff;
+}
+
+button {
+    background-color: #2196F3;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0d6efd;
+}
+
+.logs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.log-item {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.log-info {
+    flex: 1;
+    text-align: left;
+}
+
+.log-action {
+    text-align: right;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+thead {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #555;
+    text-align: left;
+}
+
+tr:hover {
+    background-color: #555;
+    transition: background-color 0.3s;
+}
