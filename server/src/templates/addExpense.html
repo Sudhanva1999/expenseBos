@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expense</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='expense.css') }}">
+
+</head>
+
+<body>
+    <div class="container card fade-in">
+        <header>
+            <h1>Add Expense</h1>
+        </header>
+
+        <form id="expenseForm" action="/submitExpense" method="post">
+            <label for="item">Item:</label>
+            <input type="text" id="item" name="item" required>
+
+            <label for="value">Value:</label>
+            <input type="number" id="value" name="value" required>
+
+            <label for="paidBy">Paid by:</label>
+            <select id="paidBy" name="paidBy" required>
+                {% for user_name in users %}
+                <option value={{user_name}}> {{ user_name }} </option>
+                {% endfor %}
+            </select>
+    <div class="group">
+            <label for="splitEqually">Split Equally: </label>
+            <input type="checkbox" id="splitEqually" name="splitEqually" onchange="toggleSplitFields()">
+    </div>
+            <label for="percentage">Percentage:</label>
+                {% for  user_name in users %}
+                <div class="group">
+                    <label for="{{user_name}}">{{user_name}}</label>
+                    <input type="checkbox" id="checkbox_{{user_name}}" name="checkbox_{{user_name}}" class="split-percent" {% if split_equally %}disabled{%
+                        endif %}>
+                </div>
+               
+                {% endfor %}
+            <button type="submit">Add Expense</button><br>
+            <a href="/dashboard">
+                <button type="button">Back</button>
+            </a>
+           
+        </form>
+    </div>
+
+    <script>
+        function toggleSplitFields() {
+            var checkboxes = document.querySelectorAll('.split-percent');
+            var splitEquallyCheckbox = document.getElementById('splitEqually');
+
+            checkboxes.forEach(function (checkbox) {
+                checkbox.disabled = splitEquallyCheckbox.checked;
+            });
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+    </script>
+</body>
+
+</html>

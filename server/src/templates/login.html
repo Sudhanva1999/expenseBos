@@ -1,0 +1,30 @@
+<!-- Your HTML file -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston Folks Expenses</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Boston Folks Expenses</h1>
+        <p>Now independent of ads!</p>
+        <div class="error-bubble {% if error_message %}show{% endif %}">
+            <p>{{ error_message }}</p>
+        </div>
+        <form method="post" action="/login">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='report.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Expense Reports</h1>
+
+        <form method="post" action="{{ url_for('view_reports') }}">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="search_query">Search:</label>
+                    <input type="text" name="search_query" id="search_query" placeholder="Search logs">
+                </div>
+
+                <div class="filter-group">
+                    <select name="month_filter" id="month_filter" class="filterF">
+                        <option value="">Filter by Month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <select name="year_filter" id="year_filter" class="filterF">
+                        <option value="">Filter by Year</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <select name="paid_by_filter" id="paid_by_filter" class="filterF">
+                        <option value="">Filter by Paid By</option>
+                        <option value="sudhanva">sudhanva</option>
+                        <option value="kartik">kartik</option>
+                        <option value="sunny">sunny</option>
+                        <option value="aditya">aditya</option>
+                        <option value="sarthak">sarthak</option>
+                    </select>
+                </div>
+
+                <button type="submit">Filter</button>
+            </div>
+        </form>
+
+        <div class="logs-container">
+            {% for log in logs %}
+            <div class="log-item">
+                <div class="log-info">
+                    <p><strong>Date:</strong> {{ log.date }}</p>
+                    <p><strong>Item:</strong> {{ log.item }}</p>
+                </div>
+                <div class="log-info">
+                    <p><strong>Value:</strong> {{ log.value }}</p>
+                    <p><strong>Paid By:</strong> {{ log.paid_by }}</p>
+                </div>
+                <div class="log-info">
+                    <p><strong>Split By:</strong> {{ log.split_by }}</p>
+                </div>
+                <div class="log-action">
+                    <form method="post" action="{{ url_for('delete_log', log_id=log.id) }}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="/dashboard">
+        <button type="button">Back</button>
+    </a>
+
+</body>
+
+</html>

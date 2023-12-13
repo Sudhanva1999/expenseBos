@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashStyle.css') }}">
+</head>
+
+<body>
+    <div class="container card fade-in">
+        <header>
+            <h1>Financial Overview for {{ user_name }}</h1>
+        </header>
+
+        <section class="summary">
+            <h2>Debt Summary</h2>
+            <table>
+                <tr>
+                    <td>You owe:</td>
+                    <td>${{ debt_summary['you_owe'] }}</td>
+                </tr>
+                <tr>
+                    <td>You are owed:</td>
+                    <td>${{ debt_summary['you_are_owed'] }}</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="details">
+            <h2>Debt Details</h2>
+
+            <section class="people-section">
+                <h3>People you owe</h3>
+                <table>
+                    {% for user, amount in debt_data.items() if amount < 0 %} <tr>
+                        <td>{{ user_name }} ➔ {{ user }}</td>
+                        <td>${{ -amount }}</td>
+                        </tr>
+                        {% endfor %}
+                </table>
+            </section>
+
+            <section class="people-section">
+                <h3>People who owe you</h3>
+                <table>
+                    {% for user, amount in debt_data.items() if amount > 0 %}
+                    <tr>
+                        <td>{{ user }} ➔ {{ user_name }}</td>
+                        <td>${{ amount }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </section>
+
+            {% if debt_data.items() | length == 0 %}
+            <p>No outstanding debts.</p>
+            {% endif %}
+        </section>
+
+        <footer>
+            <a href="/add_expense">
+                <button type="submit">Add Expense</button>
+            </a>
+            <a href="/reports">
+                <button type="submit">Show Your History</button>
+            </a>
+               
+            </form>
+        </footer>
+    </div>
+</body>
+
+</html>
