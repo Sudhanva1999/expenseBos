@@ -9,11 +9,11 @@ app.secret_key = "your_secret_key"
 
 # Dictionary for mapping email to username during login
 users_emails = {
-    "test@gmail.com": "sudhanva",
-    "aditya@example.com": "aditya",
-    "kartik@example.com": "kartik",
-    "sarthak@example.com": "sarthak",
-    "sunny@example.com": "sunny",
+    "sid.paturkar@gmail.com": "sudhanva",
+    "aadityakasbekar@gmail.com": "aditya",
+    "yesitsmefolks@gmail.com": "kartik",
+    "sirsarthakanjikar@gmail.com": "sarthak",
+    "sunny@gmail.com": "sunny",
 }
 
 config = {
