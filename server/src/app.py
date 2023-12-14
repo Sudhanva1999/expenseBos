@@ -190,8 +190,7 @@ def retrieve_logs(
         }
         for log_id, log_details in logs_data.items()
         if (
-            user_name in log_details["split_by"]
-            and (not search_query or search_query.lower() in log_details["item"].lower())
+            (not search_query or search_query.lower() in log_details["item"].lower())
             and (
                 not month_filter
                 or month_filter.lower() == log_details["date"].split("/")[1].lower()
